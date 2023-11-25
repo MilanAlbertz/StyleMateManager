@@ -4,7 +4,7 @@ using System;
 namespace StyleMate.Service.Services
 {
     /// <summary>
-    /// Interface defining the people service
+    /// Interface defining the garment service
     /// </summary>
     public interface IGarmentService
     {

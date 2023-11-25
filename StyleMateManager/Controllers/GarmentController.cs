@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
 using StyleMate.Data.EntityModels;
 using StyleMate.Service.Services;
-using StyleMateManager.API.Migrations;
 
 namespace StyleMate.API.Controllers
 {
@@ -23,18 +16,18 @@ namespace StyleMate.API.Controllers
         /// <summary>
         /// Constructor
         /// </summary>
-        /// <param name="garmentService">DI injected peopleService</param>
+        /// <param name="garmentService">DI injected garmentService</param>
         /// <param name="mapper">DI injected automapper</param>
         public GarmentController(IGarmentService garmentService)
         {
             _garmentService = garmentService;
         }
 
-        // GET: api/People
+        // GET: api/Garment
         /// <summary>
-        /// Get a list of all people
+        /// Get a list of all garments
         /// </summary>
-        /// <returns>The list of people</returns>
+        /// <returns>The list of garments</returns>
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public List<StyleMateGarment> GetGarment()

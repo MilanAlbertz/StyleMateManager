@@ -41,7 +41,7 @@ namespace StyleMate.API
                 //options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
             });
 
-            // add peopleservice to DI
+            // add garmentservice to DI
             builder.Services.AddScoped<IGarmentService, GarmentService>();
             // ad db context to DI
             var constring = DatabaseConnectionHandler.Instance.Connection.ConnectionString;
