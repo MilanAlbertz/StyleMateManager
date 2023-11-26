@@ -3,13 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33723.286
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StyleMateManager.API", "StyleMateManager\StyleMateManager.API.csproj", "{00A5F253-5F93-406A-99FA-8AE4821FE541}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StyleMateManager.API", "StyleMateManager\StyleMateManager.API.csproj", "{00A5F253-5F93-406A-99FA-8AE4821FE541}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StyleMate.ViewModels", "ViewModels\StyleMate.ViewModels.csproj", "{79422FE9-4B9A-4439-9EE4-6EA86353E761}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StyleMate.Data", "StyleMate.Data\StyleMate.Data.csproj", "{AE93D5D3-8E6F-44D1-A224-055C0593D8D4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StyleMate.Data", "StyleMate.Data\StyleMate.Data.csproj", "{AE93D5D3-8E6F-44D1-A224-055C0593D8D4}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StyleMate.Service", "StyleMate.Service\StyleMate.Service.csproj", "{DAEDE3C1-CB1E-4310-AFCD-CCFF530DA473}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StyleMate.Service", "StyleMate.Service\StyleMate.Service.csproj", "{DAEDE3C1-CB1E-4310-AFCD-CCFF530DA473}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,10 +19,6 @@ Global
 		{00A5F253-5F93-406A-99FA-8AE4821FE541}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{00A5F253-5F93-406A-99FA-8AE4821FE541}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{00A5F253-5F93-406A-99FA-8AE4821FE541}.Release|Any CPU.Build.0 = Release|Any CPU
-		{79422FE9-4B9A-4439-9EE4-6EA86353E761}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{79422FE9-4B9A-4439-9EE4-6EA86353E761}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{79422FE9-4B9A-4439-9EE4-6EA86353E761}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{79422FE9-4B9A-4439-9EE4-6EA86353E761}.Release|Any CPU.Build.0 = Release|Any CPU
 		{AE93D5D3-8E6F-44D1-A224-055C0593D8D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{AE93D5D3-8E6F-44D1-A224-055C0593D8D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AE93D5D3-8E6F-44D1-A224-055C0593D8D4}.Release|Any CPU.ActiveCfg = Release|Any CPU

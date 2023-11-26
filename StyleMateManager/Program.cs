@@ -41,12 +41,13 @@ namespace StyleMate.API
                 //options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
             });
 
-            // add garmentservice to DI
+            // add services to DI
             builder.Services.AddScoped<IGarmentService, GarmentService>();
+            builder.Services.AddScoped<ISourceGarmentService, SourceGarmentService>();
+
             // ad db context to DI
-            var constring = DatabaseConnectionHandler.Instance.Connection.ConnectionString;
-            
             builder.Services.AddStyleMateContext(DatabaseConnectionHandler.Instance.Connection.ConnectionString);
+
             // add automapper to DI (https://code-maze.com/automapper-net-core/)
             //builder.Services.AddAutoMapper(typeof(Program));
 

@@ -17,7 +17,9 @@ namespace StyleMate.Service.Services
 
         public List<StyleMateGarment> GetStyleMateGarment()
         {
-            List<StyleMateGarment> garments = _dbContext.StyleMateGarments.ToList();
+            var garments = _dbContext.StyleMateGarments
+                .Include(g => g.ImageUrls)
+                .ToList();
             return garments;
         }
     }

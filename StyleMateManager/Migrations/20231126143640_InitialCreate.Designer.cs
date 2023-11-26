@@ -11,7 +11,7 @@ using StyleMate.Data;
 namespace StyleMateManager.API.Migrations
 {
     [DbContext(typeof(StyleMateDataContext))]
-    [Migration("20231125213526_InitialCreate")]
+    [Migration("20231126143640_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />

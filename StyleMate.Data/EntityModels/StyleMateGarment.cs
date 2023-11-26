@@ -1,11 +1,13 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace StyleMate.Data.EntityModels
 {
     public class StyleMateGarment
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         [Required]
         [StringLength(50)]
@@ -27,6 +29,7 @@ namespace StyleMate.Data.EntityModels
     public class ImageUrl
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public string Url { get; set; }
     }
@@ -34,6 +37,7 @@ namespace StyleMate.Data.EntityModels
     public class Tag
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public string GarmentTag { get; set; }
     }

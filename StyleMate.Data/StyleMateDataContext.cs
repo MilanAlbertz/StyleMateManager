@@ -24,7 +24,7 @@ namespace StyleMate.Data
             base.OnModelCreating(modelBuilder);
 
             //dataseed
-            modelBuilder.Entity<StyleMateGarment>().HasData(new StyleMateGarment() { Id = 1, Name = "Werkt gw man" });
+            //modelBuilder.Entity<StyleMateGarment>().HasData(new StyleMateGarment() { Id = 1, Name = "Werkt gw man" });
         }
     }
 }
