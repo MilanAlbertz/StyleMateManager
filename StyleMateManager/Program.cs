@@ -56,6 +56,7 @@ namespace StyleMate.API
             //Configure the HTTP request pipeline.
             //if (app.Environment.IsDevelopment())
             //{
+            app.UseCors(options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             app.UseSwagger();
             app.UseSwaggerUI();
             //}

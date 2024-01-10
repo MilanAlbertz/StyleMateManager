@@ -13,5 +13,6 @@ namespace StyleMate.Service.Services
         /// </summary>
         /// <returns>The list of garments</returns>
         List<StyleMateGarment> GetStyleMateGarment();
+        List<StyleMateGarment> Get10StyleMateGarment(string type, string gender);
     }
 }

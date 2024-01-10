@@ -12,11 +12,11 @@ namespace StyleMate.Data
     /// </summary>
     public class DatabaseConnectionInfo
     {
-        public string Server { get; set; } = "localhost";
-        public string Database { get; set; } = "StyleMateDatabase";
+        public string Server { get; set; } = "2a02:a45c:d6dc:1:da3a:ddff:fe81:3070";
+        public string Database { get; set; } = "stylematetestdb";
         public int Port { get; set; } = 3306;
         public string User { get; set; } = "root";
-        public string Password { get; set; } = "TestDB123";
+        public string Password { get; set; } = "B@iley2003";
 
         [JsonIgnore]
         public string ConnectionString
@@ -26,6 +26,5 @@ namespace StyleMate.Data
                 return $"server={Server};port={Port};database={Database};user={User};password={Password}";
             }
         }
-
     }
 }

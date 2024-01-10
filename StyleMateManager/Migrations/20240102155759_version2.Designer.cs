@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using StyleMate.Data;
 
@@ -10,9 +11,11 @@ using StyleMate.Data;
 namespace StyleMateManager.API.Migrations
 {
     [DbContext(typeof(StyleMateDataContext))]
-    partial class StyleMateDataContextModelSnapshot : ModelSnapshot
+    [Migration("20240102155759_version2")]
+    partial class version2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

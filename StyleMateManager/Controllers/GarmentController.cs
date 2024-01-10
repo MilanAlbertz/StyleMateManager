@@ -28,11 +28,24 @@ namespace StyleMate.API.Controllers
         /// Get a list of all garments
         /// </summary>
         /// <returns>The list of garments</returns>
-        [HttpGet]
+        [HttpGet("all")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public List<StyleMateGarment> GetGarment()
         {
             var Garments = _garmentService.GetStyleMateGarment();
+            return Garments;
+        }
+
+        // GET: api/GetSomeRandomGarments
+        /// <summary>
+        /// Get a list of all garments
+        /// </summary>
+        /// <returns>The list of garments</returns>
+        [HttpGet("random10")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public List<StyleMateGarment> Get10Garments([FromQuery] string type = "Everything", [FromQuery] string gender = "")
+        {
+            var Garments = _garmentService.Get10StyleMateGarment(type, gender);
             return Garments;
         }
     }
