@@ -44,6 +44,7 @@ namespace StyleMate.API
             // add services to DI
             builder.Services.AddScoped<IGarmentService, GarmentService>();
             builder.Services.AddScoped<ISourceGarmentService, SourceGarmentService>();
+            builder.Services.AddScoped<IUserService, UserService>();
 
             // ad db context to DI
             builder.Services.AddStyleMateContext(DatabaseConnectionHandler.Instance.Connection.ConnectionString);

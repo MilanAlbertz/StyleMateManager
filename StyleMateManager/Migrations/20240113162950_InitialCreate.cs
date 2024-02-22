@@ -24,11 +24,28 @@ namespace StyleMateManager.API.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Price = table.Column<float>(type: "float", nullable: false),
                     SiteUrl = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Gender = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Type = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4")
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_StyleMateGarments", x => x.Id);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "Users",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "varchar(255)", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Users", x => x.Id);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -74,15 +91,64 @@ namespace StyleMateManager.API.Migrations
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
-            migrationBuilder.InsertData(
-                table: "StyleMateGarments",
-                columns: new[] { "Id", "Name", "Price", "SiteUrl" },
-                values: new object[] { 1, "Werkt gw man", 0f, "" });
+            migrationBuilder.CreateTable(
+                name: "LikedGarments",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    UserId = table.Column<string>(type: "varchar(255)", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    GarmentId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_LikedGarments", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_LikedGarments_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "LikedTags",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    UserId = table.Column<string>(type: "varchar(255)", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    TagId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_LikedTags", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_LikedTags_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ImageUrls_StyleMateGarmentId",
                 table: "ImageUrls",
                 column: "StyleMateGarmentId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_LikedGarments_UserId",
+                table: "LikedGarments",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_LikedTags_UserId",
+                table: "LikedTags",
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Tags_StyleMateGarmentId",
@@ -97,7 +163,16 @@ namespace StyleMateManager.API.Migrations
                 name: "ImageUrls");
 
             migrationBuilder.DropTable(
+                name: "LikedGarments");
+
+            migrationBuilder.DropTable(
+                name: "LikedTags");
+
+            migrationBuilder.DropTable(
                 name: "Tags");
+
+            migrationBuilder.DropTable(
+                name: "Users");
 
             migrationBuilder.DropTable(
                 name: "StyleMateGarments");

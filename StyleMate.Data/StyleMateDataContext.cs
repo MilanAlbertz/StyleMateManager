@@ -16,6 +16,9 @@ namespace StyleMate.Data
         }
 
         public virtual DbSet<StyleMateGarment> StyleMateGarments { get; set; }
+        public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<UserLikedGarment> LikedGarments { get; set; }
+        public virtual DbSet<UserLikedTags> LikedTags { get; set; }
         public virtual DbSet<ImageUrl> ImageUrls { get; set; }
         public virtual DbSet<Tag> Tags { get; set; }
 

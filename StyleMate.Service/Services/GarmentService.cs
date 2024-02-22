@@ -3,6 +3,7 @@ using StyleMate.Data.EntityModels;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 
 namespace StyleMate.Service.Services
 {
@@ -56,6 +57,27 @@ namespace StyleMate.Service.Services
             catch (Exception ex) {
                 return null;
             }
+        }
+
+        public List<StyleMateGarment> GetLikedGarments(string userId)
+        {
+            var garmentIds = _dbContext.LikedGarments
+                           .Where(ul => ul.UserId == userId)
+                           .Select(ul => ul.GarmentId)
+                           .ToList();
+
+            return _dbContext.StyleMateGarments
+                           .Where(g => garmentIds.Contains(g.Id)).Include(g => g.ImageUrls)
+                           .Where(g => g.ImageUrls.Any(i => i.Url != null))
+                           .ToList();
+        }
+
+        public Task StoreLikedGarmentToUser(int garmentId, string userId)
+        {
+            _dbContext.Add(new UserLikedGarment() { GarmentId = garmentId, UserId = userId });
+            _dbContext.SaveChanges();
+
+            return Task.CompletedTask;
         }
     }
 }

@@ -16,7 +16,7 @@ namespace StyleMate.Data
         public string Database { get; set; } = "stylematetestdb";
         public int Port { get; set; } = 3306;
         public string User { get; set; } = "root";
-        public string Password { get; set; } = "B@iley2003";
+        public string Password { get; set; } = "TestDB123";
 
         [JsonIgnore]
         public string ConnectionString

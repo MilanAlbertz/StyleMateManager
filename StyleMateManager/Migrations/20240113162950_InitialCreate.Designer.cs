@@ -11,8 +11,8 @@ using StyleMate.Data;
 namespace StyleMateManager.API.Migrations
 {
     [DbContext(typeof(StyleMateDataContext))]
-    [Migration("20240102155759_version2")]
-    partial class version2
+    [Migration("20240113162950_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -93,6 +93,56 @@ namespace StyleMateManager.API.Migrations
                     b.ToTable("Tags");
                 });
 
+            modelBuilder.Entity("StyleMate.Data.EntityModels.User", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("varchar(255)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("StyleMate.Data.EntityModels.UserLikedGarment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int>("GarmentId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("varchar(255)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("LikedGarments");
+                });
+
+            modelBuilder.Entity("StyleMate.Data.EntityModels.UserLikedTags", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int>("TagId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("varchar(255)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("LikedTags");
+                });
+
             modelBuilder.Entity("StyleMate.Data.EntityModels.ImageUrl", b =>
                 {
                     b.HasOne("StyleMate.Data.EntityModels.StyleMateGarment", null)
@@ -107,11 +157,36 @@ namespace StyleMateManager.API.Migrations
                         .HasForeignKey("StyleMateGarmentId");
                 });
 
+            modelBuilder.Entity("StyleMate.Data.EntityModels.UserLikedGarment", b =>
+                {
+                    b.HasOne("StyleMate.Data.EntityModels.User", null)
+                        .WithMany("LikedGarments")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("StyleMate.Data.EntityModels.UserLikedTags", b =>
+                {
+                    b.HasOne("StyleMate.Data.EntityModels.User", null)
+                        .WithMany("LikedTags")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("StyleMate.Data.EntityModels.StyleMateGarment", b =>
                 {
                     b.Navigation("ImageUrls");
 
                     b.Navigation("Tags");
+                });
+
+            modelBuilder.Entity("StyleMate.Data.EntityModels.User", b =>
+                {
+                    b.Navigation("LikedGarments");
+
+                    b.Navigation("LikedTags");
                 });
 #pragma warning restore 612, 618
         }

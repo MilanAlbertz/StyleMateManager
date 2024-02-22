@@ -14,5 +14,7 @@ namespace StyleMate.Service.Services
         /// <returns>The list of garments</returns>
         List<StyleMateGarment> GetStyleMateGarment();
         List<StyleMateGarment> Get10StyleMateGarment(string type, string gender);
+        List<StyleMateGarment> GetLikedGarments(string userId);
+        Task StoreLikedGarmentToUser(int garmentId, string userId);
     }
 }

@@ -36,7 +36,21 @@ namespace StyleMate.API.Controllers
             return Garments;
         }
 
+        // GET: api/LikedGarments
+        /// <summary>
+        /// Get a list of all liked garments
+        /// </summary>
+        /// <returns>The list of liked garments</returns>
+        [HttpGet("likedgarments")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public List<StyleMateGarment> GetLikedGarments([FromQuery] string userId)
+        {
+            var Garments = _garmentService.GetLikedGarments(userId);
+            return Garments;
+        }
+
         // GET: api/GetSomeRandomGarments
+        /// <summary>
         /// <summary>
         /// Get a list of all garments
         /// </summary>
@@ -47,6 +61,20 @@ namespace StyleMate.API.Controllers
         {
             var Garments = _garmentService.Get10StyleMateGarment(type, gender);
             return Garments;
+        }
+
+        // GET: api/GetSomeRandomGarments
+        /// <summary>
+        /// <summary>
+        /// Get a list of all garments
+        /// </summary>
+        /// <returns>The list of garments</returns>
+        [HttpPost("StoreLikedGarmentToUser")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public Task StoreLikedGarmentToUser([FromQuery] int garmentId, [FromQuery] string userId)
+        {
+            _garmentService.StoreLikedGarmentToUser(garmentId, userId);
+            return Task.CompletedTask;
         }
     }
 }
