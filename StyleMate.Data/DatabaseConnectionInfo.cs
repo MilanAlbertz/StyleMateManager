@@ -13,7 +13,7 @@ namespace StyleMate.Data
     public class DatabaseConnectionInfo
     {
         public string Server { get; set; } = "2a02:a45c:d6dc:1:da3a:ddff:fe81:3070";
-        public string Database { get; set; } = "stylematetestdb";
+        public string Database { get; set; } = "stylematedatabase";
         public int Port { get; set; } = 3306;
         public string User { get; set; } = "root";
         public string Password { get; set; } = "TestDB123";
