@@ -1,4 +1,4 @@
-name: Publish 
+name: Publish
 
 on:
   workflow_dispatch:
@@ -24,4 +24,5 @@ jobs:
         run: dotnet build ./StyleMateManager.sln --configuration Release --no-restore
 
       - name: Publish
-        run: dotnet publish ./StyleMateManager.sln -- configuration Release --no-build
+        run: |
+          dotnet publish ./StyleMateManager.sln --configuration Release --output ./publish_output
