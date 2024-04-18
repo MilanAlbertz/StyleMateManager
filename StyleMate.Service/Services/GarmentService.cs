@@ -39,22 +39,23 @@ namespace StyleMate.Service.Services
 
             query = query.Include(g => g.ImageUrls)
                          .Where(g => g.ImageUrls.Any(i => i.Url != null));
+
             try
             {
-                var maxId = query.Max(g => g.Id);
-                var random = new Random();
-                var randomIds = Enumerable.Range(0, 10)
-                    .Select(_ => random.Next(1, maxId + 1)) // +1 to include the maxId
-                    .Distinct() // Ensure uniqueness of IDs
-                    .ToList();
+                var randomGarments = query.ToList();
 
-                var randomGarments = query
-                    .Where(g => randomIds.Contains(g.Id))
-                    .ToList();
+                // Shuffle the list of garments
+                var random = new Random();
+                randomGarments = randomGarments.OrderBy(g => random.Next()).ToList();
+
+                // Take the first 10 garments
+                randomGarments = randomGarments.Take(10).ToList();
 
                 return randomGarments;
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
+                // Handle exception
                 return null;
             }
         }
