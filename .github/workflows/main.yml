@@ -29,10 +29,10 @@ jobs:
 
       - name: Publish
         run: |
-          dotnet publish ./StyleMateManager.sln --configuration Release --output '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}'
+          dotnet publish ./StyleMateManager.sln --configuration Release --no-build --output '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}'
       
       - name: Deploy
-        uses: actions/webapps-deploy@v2
+        uses: actions/webapps-deploy@v1
         with:
           app-name: '${{ env.AZURE_WEBAPP_NAME }}'
           publish-profile: '${{secrets.AZURE_PUBLISH_PROFILE}}'
