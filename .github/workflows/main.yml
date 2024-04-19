@@ -1,10 +1,14 @@
-name: Publish
+name: Publish Application
 
 on:
   workflow_dispatch:
   push:
     branches:
       - master
+
+env:
+  AZURE_WEBAPP_NAME: stylematebackend
+  AZURE_WEBAPP_PACKAGE_PATH: "./publish"
 
 jobs:
   publish:
@@ -24,5 +28,11 @@ jobs:
         run: dotnet build ./StyleMateManager.sln --configuration Release --no-restore
 
       - name: Publish
-        run: |
-          dotnet publish ./StyleMateManager.sln --configuration Release --output ./publish_output
+        run:  dotnet publish ./StyleMateManager.sln --configuration Release --no-build --output '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}'
+      
+      - name: Deploy
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: '${{ env.AZURE_WEBAPP_NAME }}'
+          publish-profile: '${{secrets.AZURE_PUBLISH_PROFILE}}'
+          package: '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}'
