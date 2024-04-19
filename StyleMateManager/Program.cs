@@ -64,7 +64,7 @@ namespace StyleMate.API
 
             app.UseHttpsRedirection();
 
-            app.UseAuthorization();
+            //app.UseAuthorization();
 
             app.MapControllers();
 
