@@ -59,7 +59,10 @@ namespace StyleMate.API
             //{
             app.UseCors(options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             app.UseSwagger();
-            app.UseSwaggerUI();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "StyleMate API V1");
+            });
             //}
 
             app.UseHttpsRedirection();

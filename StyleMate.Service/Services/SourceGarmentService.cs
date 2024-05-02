@@ -8,6 +8,7 @@ using StyleMate.Data.EntityModels;
 using System;
 using System.Net.Http;
 using System.Text.RegularExpressions;
+using System.Globalization;
 
 namespace StyleMate.Service.Services
 {
@@ -115,7 +116,7 @@ namespace StyleMate.Service.Services
                                 {
                                     Name = garmentName,
                                     SiteUrl = garmentUrl,
-                                    Price = float.Parse(garmentPrice),
+                                    Price = float.Parse(garmentPrice, CultureInfo.InvariantCulture),
                                     ImageUrls = imageUrlList,
                                     Gender = garmentGender,
                                     Type = garmentType
